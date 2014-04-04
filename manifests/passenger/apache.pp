@@ -42,6 +42,8 @@ class rvm::passenger::apache(
     passenger_ruby           => "${rvm_prefix}/rvm/wrappers/${ruby_version}/ruby",
     passenger_max_pool_size  => $maxpoolsize,
     passenger_pool_idle_time => $poolidletime,
+    mod_path                 => "${gemroot}/buildout/apache2/mod_passenger.so",
+    mod_package_ensure       => 'absent',
     require                  => Exec['passenger-install-apache2-module'],
     subscribe                => Exec['passenger-install-apache2-module'],
   }
